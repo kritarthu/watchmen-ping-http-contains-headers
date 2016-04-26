@@ -17,17 +17,17 @@ PingService.prototype.ping = function(service, callback){
     poll: false
   };
 
-  if (!service.pingServiceOptions || !service.pingServiceOptions['http-contains'] ||
-      !service.pingServiceOptions['http-contains'].contains ||
-      !service.pingServiceOptions['http-contains'].contains.value) {
+  if (!service.pingServiceOptions || !service.pingServiceOptions['http-contains-headers'] ||
+      !service.pingServiceOptions['http-contains-headers'].contains ||
+      !service.pingServiceOptions['http-contains-headers'].contains.value) {
     callback('http-contains plugin configuration is missing');
   }
 
-  var contains = service.pingServiceOptions['http-contains'].contains.value;
+  var contains = service.pingServiceOptions['http-contains-headers'].contains.value;
   var notContains = null;
 
-  if (service.pingServiceOptions['http-contains'].notContains){
-    notContains = service.pingServiceOptions['http-contains'].notContains.value;
+  if (service.pingServiceOptions['http-contains-headers'].notContains){
+    notContains = service.pingServiceOptions['http-contains-headers'].notContains.value;
   }
 
   request.get(options, function(error, response, body){
