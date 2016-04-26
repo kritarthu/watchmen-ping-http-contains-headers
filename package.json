@@ -1,11 +1,11 @@
 {
-  "name": "watchmen-ping-http-contains-headers",
-  "version": "0.0.3",
+  "name": "watchmen-ping-http-post-headers",
+  "version": "0.0.1",
   "description": "Ping service for watchmen. Check if the http response contains certain content",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kritarthu/watchmen-ping-http-contains-headers.git"
+    "url": "git+https://github.com/kritarthu/watchmen-ping-http-post-headers.git"
   },
   "scripts": {
     "test": "mocha -R list -b test/*.js"
@@ -18,9 +18,9 @@
   "author": "Kritarth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kritarthu/watchmen-ping-http-contains-headers/issues"
+    "url": "https://github.com/kritarthu/watchmen-ping-http-post-headers/issues"
   },
-  "homepage": "https://github.com/kritarthu/watchmen-ping-http-contains-headers#readme",
+  "homepage": "https://github.com/kritarthu/watchmen-ping-http-post-headers#readme",
   "dependencies": {
     "request": "^2.55.0"
   },

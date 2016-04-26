@@ -14,23 +14,24 @@ PingService.prototype.ping = function(service, callback){
     uri: service.url,
     timeout: service.timeout,
     headers:service.header,
+    form:service.form,
     poll: false
   };
 
-  if (!service.pingServiceOptions || !service.pingServiceOptions['http-contains-headers'] ||
-      !service.pingServiceOptions['http-contains-headers'].contains ||
-      !service.pingServiceOptions['http-contains-headers'].contains.value) {
+  if (!service.pingServiceOptions || !service.pingServiceOptions['http-post-headers'] ||
+      !service.pingServiceOptions['http-post-headers'].contains ||
+      !service.pingServiceOptions['http-post-headers'].contains.value) {
     callback('http-contains plugin configuration is missing');
   }
 
-  var contains = service.pingServiceOptions['http-contains-headers'].contains.value;
+  var contains = service.pingServiceOptions['http-post-headers'].contains.value;
   var notContains = null;
 
-  if (service.pingServiceOptions['http-contains-headers'].notContains){
-    notContains = service.pingServiceOptions['http-contains-headers'].notContains.value;
+  if (service.pingServiceOptions['http-post-headers'].notContains){
+    notContains = service.pingServiceOptions['http-post-headers'].notContains.value;
   }
 
-  request.get(options, function(error, response, body){
+  request.post(options, function(error, response, body){
 
     var elapsedTime = +new Date() - startTime;
     console.dir(response)
