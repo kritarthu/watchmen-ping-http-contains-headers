@@ -14,7 +14,7 @@ PingService.prototype.ping = function(service, callback){
     uri: service.url,
     timeout: service.timeout,
     headers:service.header,
-    form:service.form,
+    json:service.form,
     poll: false
   };
 
