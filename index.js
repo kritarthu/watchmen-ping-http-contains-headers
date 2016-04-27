@@ -39,6 +39,9 @@ PingService.prototype.ping = function(service, callback){
       return callback(error, body, response, elapsedTime);
     }
 
+    if(typeof body =='object'){
+      body = JSON.stringify(body)
+    }
     if (body.indexOf(contains) === -1) {
       return callback(contains + ' not found', body, response, elapsedTime);
     }
