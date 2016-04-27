@@ -1,5 +1,5 @@
 {
-  "name": "watchmen-ping-http-post-headers",
+  "name": "watchmen-ping-http-contains-post",
   "version": "0.0.1",
   "description": "Ping service for watchmen. Check if the http response contains certain content",
   "main": "index.js",
