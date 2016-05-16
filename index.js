@@ -33,7 +33,6 @@ PingService.prototype.ping = function(service, callback){
   request.get(options, function(error, response, body){
 
     var elapsedTime = +new Date() - startTime;
-    console.dir(response)
     if (error) {
       return callback(error, body, response, elapsedTime);
     }
