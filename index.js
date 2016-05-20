@@ -38,11 +38,11 @@ PingService.prototype.ping = function(service, callback){
     }
 
     if (body.indexOf(contains) === -1) {
-      return callback(contains + ' not found', body, response, elapsedTime);
+      return callback(contains + ' not found in response body: ' + body, body, response, elapsedTime);
     }
     else {
       if (notContains && body.indexOf(notContains) > -1) {
-        return callback(notContains + ' found', body, response, elapsedTime);
+        return callback(notContains + ' found in response body: '+ body, body, response, elapsedTime);
       }
       callback(null, body, response, elapsedTime);
     }
