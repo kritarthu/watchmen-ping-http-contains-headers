@@ -1,6 +1,6 @@
 {
   "name": "watchmen-ping-http-contains-post",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Ping service for watchmen. Check if the http response contains certain content",
   "main": "index.js",
   "repository": {
