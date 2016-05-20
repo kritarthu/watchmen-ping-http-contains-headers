@@ -14,29 +14,33 @@ PingService.prototype.ping = function(service, callback){
     uri: service.url,
     timeout: service.timeout,
     headers:service.header,
+    json:service.form,
     poll: false
   };
 
-  if (!service.pingServiceOptions || !service.pingServiceOptions['http-contains-headers'] ||
-      !service.pingServiceOptions['http-contains-headers'].contains ||
-      !service.pingServiceOptions['http-contains-headers'].contains.value) {
+  if (!service.pingServiceOptions || !service.pingServiceOptions['http-contains-post'] ||
+      !service.pingServiceOptions['http-contains-post'].contains ||
+      !service.pingServiceOptions['http-contains-post'].contains.value) {
     callback('http-contains plugin configuration is missing');
   }
 
-  var contains = service.pingServiceOptions['http-contains-headers'].contains.value;
+  var contains = service.pingServiceOptions['http-contains-post'].contains.value;
   var notContains = null;
 
-  if (service.pingServiceOptions['http-contains-headers'].notContains){
-    notContains = service.pingServiceOptions['http-contains-headers'].notContains.value;
+  if (service.pingServiceOptions['http-contains-post'].notContains){
+    notContains = service.pingServiceOptions['http-contains-post'].notContains.value;
   }
 
-  request.get(options, function(error, response, body){
+  request.post(options, function(error, response, body){
 
     var elapsedTime = +new Date() - startTime;
     if (error) {
       return callback(error, body, response, elapsedTime);
     }
 
+    if(typeof body =='object'){
+      body = JSON.stringify(body)
+    }
     if (body.indexOf(contains) === -1) {
       return callback(contains + ' not found in response body: ' + body, body, response, elapsedTime);
     }
