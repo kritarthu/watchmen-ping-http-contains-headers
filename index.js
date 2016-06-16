@@ -14,7 +14,7 @@ PingService.prototype.ping = function(service, callback){
     uri: service.url,
     timeout: service.timeout,
     headers:service.header,
-    json:service.form,
+    json:JSON.parse(service.form),
     poll: false
   };
 
@@ -40,6 +40,9 @@ PingService.prototype.ping = function(service, callback){
 
     if(typeof body =='object'){
       body = JSON.stringify(body)
+    }
+    if(undefined == body) {
+      body = "";
     }
     if (body.indexOf(contains) === -1) {
       return callback(contains + ' not found in response body : ' + body, body, response, elapsedTime);
